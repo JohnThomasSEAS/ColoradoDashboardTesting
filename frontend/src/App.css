@@ -8,25 +8,31 @@ body {
 
 .App {
   background-color: #282c34;
-  margin: 4% 3%;
+  margin: 4% 2%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .gridCell {
-  padding: 0;
+  padding: 15px;
+  padding-top: 30px;
   margin: 5px;
-  margin-bottom: 20px;
-  height: 500px;
+  margin-bottom: 10px;
+  height: 580px;
   width: 750px;
-  /* border: solid rgb(124, 29, 29) 1px; */
+  border: solid rgba(255,255,255, 0.5) 1px;
+  transition: all 300ms ease-in-out;
+}
+
+.gridCell:hover {
+  box-shadow: 0 0 30px 0 rgba(255,255,255, 0.35);
 }
 
 #switchChartButton {
   position: absolute;
-  right: 10px;
-  top: 25px;
+  right: 30px;
+  top: 50px;
   margin: 10px;
   padding: 10px;
   background-color: #FF7F0E;
@@ -35,10 +41,21 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: all 300ms ease-in-out;
+  z-index: 99;
 }
 
 #switchChartButton:hover {
   box-shadow: 0 0 5px 0 #ffffff;
+}
+
+.icon {
+  height: 13px;
+  width: auto;
+  margin-right: 5px;
+}
+
+.largeIcon {
+  height: 17px;
 }
 
 

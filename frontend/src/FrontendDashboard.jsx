@@ -348,7 +348,9 @@ const FrontendDash = ({type, burnInCutoff}) => {
       {type === 'Bias' ? 
 
         <div className="dropdown biasChartDropdown">
-            <button class="dropbtn">Plot Type</button>
+            <button class="dropbtn"><span><img src="https://img.icons8.com/?size=100&id=86349&format=png&color=ffffff" className = "icon largeIcon" alt="" /></span>
+            Plot Type
+            </button>
             <div class="dropdown-content">
                 <p onClick = {handleChartTypeChange}>DOFS</p>
                 <p onClick = {handleChartTypeChange}>Bias</p>

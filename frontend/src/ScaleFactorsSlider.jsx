@@ -49,6 +49,10 @@ const ScaleFactorsSlider = ({burnInCutoff}) => {
         return () => clearInterval(intervalRef.current);
     }, [slideshowStatus, slideshowInterval]);
 
+    useEffect(() => {
+        console.log(dateChunks[dateChunks.length - 1].split(' > ')[1].replace(/-/g, ""))
+    }, []);
+
     const createGif = () => {
         setLoading(true);
         const images = dateChunks.map((_, index) => `/${plotType}/period${index + 1}.png`);
@@ -66,7 +70,7 @@ const ScaleFactorsSlider = ({burnInCutoff}) => {
                 if (!obj.error) {
                     const link = document.createElement('a');
                     link.href = obj.image;
-                    link.download = 'slideshow.gif';
+                    link.download = `Colorado_${plotType}_${dateChunks[0].split(' > ')[0].replace(/-/g, "")}>${dateChunks[dateChunks.length - 1].split(' > ')[1].replace(/-/g, "")}.gif`;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
@@ -79,21 +83,24 @@ const ScaleFactorsSlider = ({burnInCutoff}) => {
     return (
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", margin: "0 10%", position: 'relative' }}>
             <div style = {{position: 'relative'}}>
-                <img src={filePath} style={{ height: 'auto', width: '500px', borderRadius: '10px' }} alt="" />
-                {sliderValue < (burnInCutoff + 1) ? <p id="burnInTag"><span><img src="https://img.icons8.com/?size=100&id=60985&format=png&color=ffffff" style={{ height: '13px', width: 'auto', marginRight: '5px' }} /></span>Burn-in Period</p> : null}
+                <img src={filePath} style={{ height: 'auto', width: '500px', borderRadius: '10px', marginLeft: '20px' }} alt="" />
+                {sliderValue < (burnInCutoff + 1) ? <p id="burnInTag"><span><img src="https://img.icons8.com/?size=100&id=60985&format=png&color=ffffff" className = "icon" /></span>Burn-in Period</p> : null}
             </div>
+
             <input type="range" min="1" max="17" value={sliderValue} className="slider" onChange={(e) => { setSliderValue(Number(e.target.value)) }} style={{ width: '92%', marginTop: '20px' }} />
+
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <h4 style={{ marginBottom: '0px' }}>Current Period: {sliderValue} of {dateChunks.length}</h4>
                 <h4 style={{ marginBottom: '0px' }}>Current Date Range: <span style={{ color: '#FF7F0E' }}>{dateChunks[sliderValue - 1]}</span></h4>
             </div>
+
             <div style={{ display: "flex", alignItems: "center", gap: '30px', marginTop: '10px' }}>
                 <h4>Autoplay:</h4>
-                {slideshowStatus ? <button id="playPauseButton" onClick={() => setSlideshowStatus(false)}>Pause</button> : <button id="playPauseButton" onClick={() => setSlideshowStatus(true)}>Play</button>}
+                {slideshowStatus ? <button id="playPauseButton" onClick={() => setSlideshowStatus(false)}><span><img src="https://img.icons8.com/?size=100&id=61012&format=png&color=ffffff" className = "icon largeIcon" alt="" /></span>Pause</button> : <button id="playPauseButton" onClick={() => setSlideshowStatus(true)}><span><img src="https://img.icons8.com/?size=100&id=59862&format=png&color=ffffff" className = "icon largeIcon" alt="" /></span>Play</button>}
                 <label htmlFor="seconds">Interval (sec)</label>
                 <input type="number" min={0.25} max={5} step={0.5} value={slideshowInterval} name="seconds" onChange={(e) => setSlideshowInterval(Number(e.target.value))} />
                 <div className="dropdown">
-                    <button className="dropbtn">Plot Type</button>
+                    <button className="dropbtn"><span><img src="https://img.icons8.com/?size=100&id=86349&format=png&color=ffffff" className = "icon largeIcon" alt="" /></span>Plot Type</button>
                     <div className="dropdown-content">
                         <p onClick={(e) => setPlotType('ScaleFactors')}>Scale Factors</p>
                         <p onClick={(e) => setPlotType('Prior')}>Prior</p>
