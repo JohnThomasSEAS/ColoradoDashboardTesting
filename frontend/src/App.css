@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  background-color: #282c34;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+  background-color: #282c34;
+  margin: 4% 3%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gridCell {
+  padding: 0;
+  margin: 5px;
+  margin-bottom: 20px;
+  height: 500px;
+  width: 750px;
+  /* border: solid rgb(124, 29, 29) 1px; */
+}
+
+#switchChartButton {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #FF7F0E;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+#switchChartButton:hover {
+  box-shadow: 0 0 5px 0 #ffffff;
+}
+
+
+

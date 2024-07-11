@@ -1,0 +1,18 @@
+.pageWrapper {
+    margin: auto;
+    padding: 1% 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dataContainer {
+    text-align: center;
+    height: 375px;
+    width: 600px;
+    border: solid green 1px;
+    margin: 10px;
+    color: #ababab;
+}
